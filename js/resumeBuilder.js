@@ -49,7 +49,7 @@ This is empty on purpose! Your code to build the resume will go here.
  	{
  		"employer" : "Software-designer",
  		"title" : "Computer-boy",
- 		"location" : "Ludhaiana",
+ 		"location" : "Ludhiana",
  		"dates" : "in future" ,
  		"description" : "Now,i did not have any work workExperience so i made it have to enter some entry in online resume  page. Just for funnnnnnnnnnnnn."	
  	}
@@ -117,10 +117,11 @@ function displayWork(){
     $(".work-entry:last").append(jobEmploy+jobTitle);
     var val = HTMLworkDates.replace("%data%",work.jobs[key].dates);
     $(".work-entry:last").append(val);
-    val = HTMLworkDescription.replace("%data",work.jobs[key].description);
-    $(".work-entry:last").append(val);
     val = HTMLworkLocation.replace("%data%",work.jobs[key].location);
     $(".work-entry:last").append(val);
+    val = HTMLworkDescription.replace("%data",work.jobs[key].description);
+    $(".work-entry:last").append(val);
+
   }
 }
 
@@ -130,13 +131,13 @@ $(document).click(function(loc){
 	var y = loc.pageY;
 	logClicks(x,y);
 });
-$("#main").append(internationalizeButton);
-function inName(name){
-	var arr=name.split(" ");
-	arr[0]=arr[0].slice(0,1).toUpperCase()+arr[0].slice(1);
-	arr[1]=arr[1].toUpperCase();
-	return arr.join(" ");
-}
+// $("#main").append(internationalizeButton);
+// function inName(name){
+// 	var arr=name.split(" ");
+// 	arr[0]=arr[0].slice(0,1).toUpperCase()+arr[0].slice(1);
+// 	arr[1]=arr[1].toUpperCase();
+// 	return arr.join(" ");
+// }
 
 projects.display = function(){
 	for(key in projects.projects){
@@ -151,4 +152,26 @@ projects.display = function(){
 	    $(".project-entry:last").append(project_data);
 	  }
 }
+
+education.display = function(){
+    for(school in education.schools){
+        $("#education").append(HTMLschoolStart);
+        // var schoolData=HTMLschoolName.replace("%data%",education.schools[school].name)+HTMLschoolDegree.replace("%data%",education.schools[school].degree);
+        $(".education-entry:last").append(HTMLschoolName.replace("%data%",education.schools[school].name)+HTMLschoolDegree.replace("%data%",education.schools[school].degree));
+        $(".education-entry:last").append(HTMLschoolDates.replace("%data%",education.schools[school].dates));
+        $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",education.schools[school].city));
+        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",education.schools[school].major));
+    }  
+    $("#education").append(HTMLonlineClasses);
+    for(course in education.onlineCourse){
+
+        $("#education").append(HTMLonlineTitle.replace("%data%",education.onlineCourse[course].title)+HTMLonlineSchool.replace("%data%",education.onlineCourse[course].school));
+        $("#education").append(HTMLonlineDates.replace("%data%",education.onlineCourse[course].dates));
+        $("#education").append(HTMLonlineURL.replace("%data%",education.onlineCourse[course].url));
+
+    }
+}
+
 projects.display();
+education.display();
+
