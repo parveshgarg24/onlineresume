@@ -14,7 +14,7 @@ This is empty on purpose! Your code to build the resume will go here.
  	"welcomeMessage" : "lorem ipsum dolor sit amet etc etc",
  	"skills" : ["awesomeness","algorithemic mind","delivering thing","adeptive"],
  	"bioPic" : "images/myphoto.jpg"
- }
+ };
 
  var education = {
  	"schools" : [
@@ -43,7 +43,7 @@ This is empty on purpose! Your code to build the resume will go here.
  		"url" : "https://freecodecamp.com"
  	}   
  	]
- }
+ };
 
  var work = {
  	"jobs" : [
@@ -55,7 +55,7 @@ This is empty on purpose! Your code to build the resume will go here.
  		"description" : "Now,i did not have any work workExperience so i made it have to enter some entry in online resume  page. Just for funnnnnnnnnnnnn."	
  	}
  	]
- }
+ };
 
  var projects = {
  	"projects": [
@@ -74,7 +74,7 @@ This is empty on purpose! Your code to build the resume will go here.
         "url" : "https://codepen.io/parveshgarg/full/JNeaya/"
      }
  	]
- }
+ };
   
  bio.display = function(){
         $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
@@ -94,11 +94,11 @@ This is empty on purpose! Your code to build the resume will go here.
              	$("#skills").append(HTMLskills.replace("%data%",bio.skills[2]));
              	$("#skills").append(HTMLskills.replace("%data%",bio.skills[3]));
              }
-  }
+  };
 
 work.display =function(){
 
-  for (key in work.jobs){
+  for (var key in work.jobs){
   	$("#workExperience").append(HTMLworkStart);
     $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[key].employer)+HTMLworkTitle.replace("%data%",work.jobs[key].title));
     $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[key].dates));
@@ -107,7 +107,7 @@ work.display =function(){
 
   }
 
-}
+};
 
 // $(document).click(function(loc){
 // 	var x = loc.pageX;
@@ -116,17 +116,17 @@ work.display =function(){
 // });
 
 projects.display = function(){
-	for(key in projects.projects){
+	for(var key in projects.projects){
 		$("#projects").append(HTMLprojectStart);
-	    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",projects.projects[key]["title"]));
-	    $(".project-entry:last").append(HTMLprojectDates.replace("%data%",projects.projects[key]["dates"]));
-	    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",projects.projects[key]["description"]));
-	    $(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[key]["images"]).replace("#",projects.projects[key]["url"]));
+	    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",projects.projects[key].title));
+	    $(".project-entry:last").append(HTMLprojectDates.replace("%data%",projects.projects[key].dates));
+	    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",projects.projects[key].description));
+	    $(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[key].images).replace("#",projects.projects[key].url));
 	  }
-}
+};
 
 education.display = function(){
-    for(school in education.schools){
+    for(var school in education.schools){
         $("#education").append(HTMLschoolStart);
         $(".education-entry:last").append(HTMLschoolName.replace("%data%",education.schools[school].name)+HTMLschoolDegree.replace("%data%",education.schools[school].degree));
         $(".education-entry:last").append(HTMLschoolDates.replace("%data%",education.schools[school].dates));
@@ -134,13 +134,13 @@ education.display = function(){
         $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",education.schools[school].major));
     }  
     $("#education").append(HTMLonlineClasses);
-    for(course in education.onlineCourse){
+    for(var course in education.onlineCourse){
         $("#education").append(HTMLschoolStart);
         $(".education-entry:last").append(HTMLonlineTitle.replace("%data%",education.onlineCourse[course].title)+HTMLonlineSchool.replace("%data%",education.onlineCourse[course].school));
         $(".education-entry:last").append(HTMLonlineDates.replace("%data%",education.onlineCourse[course].dates));
         $(".education-entry:last").append(HTMLonlineURL.replace("%data%",education.onlineCourse[course].url));
     }
-}
+};
 //footer content
         $("#footerContacts").append(HTMLmobile.replace("%contact%","mobile").replace("%data%",bio.contacts.mobile));
         $("#footerContacts").append(HTMLemail.replace("%contact%","email").replace("%data%",bio.contacts.email));
@@ -163,5 +163,4 @@ $("#mapDiv").append(googleMap);
 
 $("projects img:first").click(function(){
     window.location = 'https://codepen.io/parveshgarg/full/RKMmqo/';
-})
-
+});
