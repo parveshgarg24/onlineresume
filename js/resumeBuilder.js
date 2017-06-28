@@ -90,7 +90,7 @@ This is empty on purpose! Your code to build the resume will go here.
         if(bio.skills.length>0) {
             $("#header").append(HTMLskillsStart);
             bio.skills.forEach(function(skill){
-                $("#skills").append(HTMLskills.replace("%data%",skill))
+                $("#skills").append(HTMLskills.replace("%data%",skill));
             });
         $("#footerContacts").append(HTMLmobile.replace("%contact%","mobile").replace("%data%",bio.contacts.mobile));
         $("#footerContacts").append(HTMLemail.replace("%contact%","email").replace("%data%",bio.contacts.email));
