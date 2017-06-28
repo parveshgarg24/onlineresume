@@ -13,7 +13,7 @@ This is empty on purpose! Your code to build the resume will go here.
  	},
  	"welcomeMessage" : "lorem ipsum dolor sit amet etc etc",
  	"skills" : ["awesomeness","algorithemic mind","delivering thing","adeptive"],
- 	"bioPic" : "images/myphoto.jpg"
+ 	"biopic" : "images/myphoto.jpg"
  };
 
  var education = {
@@ -22,24 +22,24 @@ This is empty on purpose! Your code to build the resume will go here.
  		"name": "Children's Valley Public School",
  		"location": "Ludhiana",
  		"degree": "Matric",
- 		"major" : ["all subjects"],
- 		"dates" : 2013,
+ 		"majors" : ["all subjects"],
+ 		"dates" : "2013",
  		"url" : "https://example.com"
  	},
  	{
  		"name": "Children's Valley Public School",
  		"location": "Ludhiana",
  		"degree": "senior secondary",
- 		"major" : ["PCM"],
- 		"dates" : 2015,
+ 		"majors" : ["PCM"],
+ 		"dates" : "2015",
  		"url" : "https://example.com"
  	}
  	],
- 	"onlineCourse" : [
+ 	"onlineCourses" : [
  	{
  		"title":"Front end developer",
  		"school" : "Freecodecamp",
- 		"dates": 2017,
+ 		"dates": "2017",
  		"url" : "https://freecodecamp.com"
  	}   
  	]
@@ -61,16 +61,16 @@ This is empty on purpose! Your code to build the resume will go here.
  	"projects": [
      {
      	"title": "tribute Page",
-     	"dates": 2016,
+     	"dates": "2016",
      	"description" : "It's my first project made by me using front end developping coding . These project is made with only html and css. These tribute  Page is of Narendra Damodardas Modi",
-        "images" : "images/tributepage.png",
-        "url" :"https://codepen.io/parveshgarg/full/RKMmqo/"
+        "images" : ["images/tributepage.png"],
+        "url" :["https://codepen.io/parveshgarg/full/RKMmqo/"]
      },
      {
      	"title" : "Digital Calculator",
-     	"dates" : 2017,
+     	"dates" : "2017",
      	"description" : "It is digital calculator. All keys and calculation are working properly. Its my best project in javascript.",
-     	"images" : "images/calculator.png",
+     	"images" : ["images/calculator.png"],
         "url" : "https://codepen.io/parveshgarg/full/JNeaya/"
      }
  	]
@@ -84,69 +84,63 @@ This is empty on purpose! Your code to build the resume will go here.
     	$("#topContacts").append(HTMLgithub.replace("%contact%","github").replace("%data%",bio.contacts.github));
         $("#topContacts").append(HTMLtwitter.replace("%contact%","twitter").replace("%data%",bio.contacts.twitter));    	
     	$("#topContacts").append(HTMLlocation.replace("%contact%","location").replace("%data%",bio.contacts.location));
-        $("#header").append(HTMLbioPic.replace("%data%",bio.bioPic));
+        $("#header").append(HTMLbioPic.replace("%data%",bio.biopic));
         $("#header").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
 
         if(bio.skills.length>0) {
-            	$("#header").append(HTMLskillsStart);
-             	$("#skills").append(HTMLskills.replace("%data%",bio.skills[0]));
-             	$("#skills").append(HTMLskills.replace("%data%",bio.skills[1]));
-             	$("#skills").append(HTMLskills.replace("%data%",bio.skills[2]));
-             	$("#skills").append(HTMLskills.replace("%data%",bio.skills[3]));
-             }
-  };
-
-work.display =function(){
-
-  for (var key in work.jobs){
-  	$("#workExperience").append(HTMLworkStart);
-    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[key].employer)+HTMLworkTitle.replace("%data%",work.jobs[key].title));
-    $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[key].dates));
-    $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[key].location));
-    $(".work-entry:last").append(HTMLworkDescription.replace("%data",work.jobs[key].description));
-
-  }
-
-};
-
-// $(document).click(function(loc){
-// 	var x = loc.pageX;
-// 	var y = loc.pageY;
-// 	logClicks(x,y);
-// });
-
-projects.display = function(){
-	for(var key in projects.projects){
-		$("#projects").append(HTMLprojectStart);
-	    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",projects.projects[key].title));
-	    $(".project-entry:last").append(HTMLprojectDates.replace("%data%",projects.projects[key].dates));
-	    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",projects.projects[key].description));
-	    $(".project-entry:last").append(HTMLprojectImage.replace("%data%",projects.projects[key].images).replace("#",projects.projects[key].url));
-	  }
-};
-
-education.display = function(){
-    for(var school in education.schools){
-        $("#education").append(HTMLschoolStart);
-        $(".education-entry:last").append(HTMLschoolName.replace("%data%",education.schools[school].name)+HTMLschoolDegree.replace("%data%",education.schools[school].degree));
-        $(".education-entry:last").append(HTMLschoolDates.replace("%data%",education.schools[school].dates));
-        $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",education.schools[school].location));
-        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",education.schools[school].major));
-    }  
-    $("#education").append(HTMLonlineClasses);
-    for(var course in education.onlineCourse){
-        $("#education").append(HTMLschoolStart);
-        $(".education-entry:last").append(HTMLonlineTitle.replace("%data%",education.onlineCourse[course].title)+HTMLonlineSchool.replace("%data%",education.onlineCourse[course].school));
-        $(".education-entry:last").append(HTMLonlineDates.replace("%data%",education.onlineCourse[course].dates));
-        $(".education-entry:last").append(HTMLonlineURL.replace("%data%",education.onlineCourse[course].url));
-    }
-};
-//footer content
+            $("#header").append(HTMLskillsStart);
+            bio.skills.forEach(function(skill){
+                $("#skills").append(HTMLskills.replace("%data%",skill))
+            });
         $("#footerContacts").append(HTMLmobile.replace("%contact%","mobile").replace("%data%",bio.contacts.mobile));
         $("#footerContacts").append(HTMLemail.replace("%contact%","email").replace("%data%",bio.contacts.email));
         $("#footerContacts").append(HTMLgithub.replace("%contact%","github").replace("%data%",bio.contacts.github));
         $("#footerContacts").append(HTMLtwitter.replace("%contact%","twitter").replace("%data%",bio.contacts.twitter));        
         $("#footerContacts").append(HTMLlocation.replace("%contact%","location").replace("%data%",bio.contacts.location));
+             }
+  };
+
+work.display =function(){
+
+  work.jobs.forEach(function(job){
+  	$("#workExperience").append(HTMLworkStart);
+    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",job.employer)+HTMLworkTitle.replace("%data%",job.title));
+    $(".work-entry:last").append(HTMLworkDates.replace("%data%",job.dates));
+    $(".work-entry:last").append(HTMLworkLocation.replace("%data%",job.location));
+    $(".work-entry:last").append(HTMLworkDescription.replace("%data",job.description));
+
+  });
+
+};
+
+projects.display = function(){
+	projects.projects.forEach(function(project){
+		$("#projects").append(HTMLprojectStart);
+	    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",project.title));
+	    $(".project-entry:last").append(HTMLprojectDates.replace("%data%",project.dates));
+	    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",project.description));
+	    $(".project-entry:last").append(HTMLprojectImage.replace("%data%",project.images).replace("#",project.url));
+	  });
+};
+
+education.display = function(){
+    education.schools.forEach(function(school){
+        $("#education").append(HTMLschoolStart);
+        $(".education-entry:last").append(HTMLschoolName.replace("%data%",school.name)+HTMLschoolDegree.replace("%data%",school.degree));
+        $(".education-entry:last").append(HTMLschoolDates.replace("%data%",school.dates));
+        $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",school.location));
+        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",school.majors));
+    });  
+    $("#education").append(HTMLonlineClasses);
+    education.onlineCourses.forEach(function(course){
+        $("#education").append(HTMLschoolStart);
+        $(".education-entry:last").append(HTMLonlineTitle.replace("%data%",course.title)+HTMLonlineSchool.replace("%data%",course.school));
+        $(".education-entry:last").append(HTMLonlineDates.replace("%data%",course.dates));
+        $(".education-entry:last").append(HTMLonlineURL.replace("%data%",course.url));
+    });
+};
+
+
 
 
 bio.display();
@@ -156,10 +150,7 @@ education.display();
 
 $("#mapDiv").append(googleMap);
 
-// $("<a href=https://codepen.io/parveshgarg/full/RKMmqo/>").insertBefore("#projects img:first");
-// $("</a>").insertAfter("#projects img:first");
-// $("<a href=https://codepen.io/parveshgarg/full/JNeaya/>").insertBefore("#projects img:nth-child(2)");
-// $("</a>").insertAfter("#projects img:nth-child(2)");
+
 
 $("projects img:first").click(function(){
     window.location = 'https://codepen.io/parveshgarg/full/RKMmqo/';
