@@ -64,7 +64,7 @@ This is empty on purpose! Your code to build the resume will go here.
      	"dates": "2016",
      	"description" : "It's my first project made by me using front end developping coding . These project is made with only html and css. These tribute  Page is of Narendra Damodardas Modi",
         "images" : ["images/tributepage.png"],
-        "url" :["https://codepen.io/parveshgarg/full/RKMmqo/"]
+        "url" :"https://codepen.io/parveshgarg/full/RKMmqo/"
      },
      {
      	"title" : "Digital Calculator",
@@ -79,24 +79,24 @@ This is empty on purpose! Your code to build the resume will go here.
  bio.display = function(){
         $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
         $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-    	$("#topContacts").append(HTMLmobile.replace("%contact%","mobile").replace("%data%",bio.contacts.mobile));
-    	$("#topContacts").append(HTMLemail.replace("%contact%","email").replace("%data%",bio.contacts.email));
-    	$("#topContacts").append(HTMLgithub.replace("%contact%","github").replace("%data%",bio.contacts.github));
-        $("#topContacts").append(HTMLtwitter.replace("%contact%","twitter").replace("%data%",bio.contacts.twitter));    	
-    	$("#topContacts").append(HTMLlocation.replace("%contact%","location").replace("%data%",bio.contacts.location));
-        $("#header").append(HTMLbioPic.replace("%data%",bio.biopic));
-        $("#header").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
+    	$("#topContacts, #footerContacts").append(HTMLmobile.replace("%contact%","mobile").replace("%data%",bio.contacts.mobile));
+    	$("#topContacts, #footerContacts").append(HTMLemail.replace("%contact%","email").replace("%data%",bio.contacts.email));
+    	$("#topContacts, #footerContacts").append(HTMLgithub.replace("%contact%","github").replace("%data%",bio.contacts.github));
+        $("#topContacts, #footerContacts").append(HTMLtwitter.replace("%contact%","twitter").replace("%data%",bio.contacts.twitter));    	
+    	$("#topContacts, #footerContacts").append(HTMLlocation.replace("%contact%","location").replace("%data%",bio.contacts.location));
+        $("#topContacts, #footerContacts").append(HTMLbioPic.replace("%data%",bio.biopic));
+        $("#topContacts, #footerContacts").append(HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage));
 
         if(bio.skills.length>0) {
             $("#header").append(HTMLskillsStart);
             bio.skills.forEach(function(skill){
                 $("#skills").append(HTMLskills.replace("%data%",skill));
-            });
-        $("#footerContacts").append(HTMLmobile.replace("%contact%","mobile").replace("%data%",bio.contacts.mobile));
-        $("#footerContacts").append(HTMLemail.replace("%contact%","email").replace("%data%",bio.contacts.email));
-        $("#footerContacts").append(HTMLgithub.replace("%contact%","github").replace("%data%",bio.contacts.github));
-        $("#footerContacts").append(HTMLtwitter.replace("%contact%","twitter").replace("%data%",bio.contacts.twitter));        
-        $("#footerContacts").append(HTMLlocation.replace("%contact%","location").replace("%data%",bio.contacts.location));
+	    });
+//         $("#footerContacts").append(HTMLmobile.replace("%contact%","mobile").replace("%data%",bio.contacts.mobile));
+//         $("#footerContacts").append(HTMLemail.replace("%contact%","email").replace("%data%",bio.contacts.email));
+//         $("#footerContacts").append(HTMLgithub.replace("%contact%","github").replace("%data%",bio.contacts.github));
+//         $("#footerContacts").append(HTMLtwitter.replace("%contact%","twitter").replace("%data%",bio.contacts.twitter));        
+//         $(",#footerContacts").append(HTMLlocation.replace("%contact%","location").replace("%data%",bio.contacts.location));
              }
   };
 
@@ -119,7 +119,9 @@ projects.display = function(){
 	    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%",project.title));
 	    $(".project-entry:last").append(HTMLprojectDates.replace("%data%",project.dates));
 	    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%",project.description));
+          project.images.forEach(function(image){
 	    $(".project-entry:last").append(HTMLprojectImage.replace("%data%",project.images).replace("#",project.url));
+	  });
 	  });
 };
 
